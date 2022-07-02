@@ -1,0 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+.container {
+  font-family: 'Inter';
+  height: 100vh;
+  overflow-y: hidden;
+}
