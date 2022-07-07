@@ -1,5 +1,5 @@
 import React from 'react'
-import heroImage from '../images/Group.png'
+const heroImage = process.env.PUBLIC_URL + '/images/Group.png'
 //'../images/Group.png'
 
 export default function Hero() {

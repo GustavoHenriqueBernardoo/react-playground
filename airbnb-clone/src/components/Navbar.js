@@ -1,5 +1,5 @@
 import React from 'react'
-import airbnblogo from '../images/airbnb-logo.png'
+const airbnblogo = process.env.PUBLIC_URL + '/images/airbnb-logo.png'
 //airbnb-logo.png
 
 export default function Navbar() {
