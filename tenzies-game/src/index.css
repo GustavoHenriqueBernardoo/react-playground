@@ -64,7 +64,7 @@ body {
   min-width: 280px;
 }
 
-.main--grid {
+.die-container {
   display: grid;
 
   grid-template-columns: repeat(5, 1fr);
@@ -75,16 +75,15 @@ body {
   padding: 8px;
 }
 
-.main--dice {
+.dice {
   width: 50px;
   height: 50px;
-  background-color: #ffffff;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   border-radius: 3.81277px;
 
   font-family: 'Karla';
   font-weight: 700;
-  font-size: 20.5889px;
+  font-size: 2rem;
   line-height: 24px;
   text-align: center;
 
@@ -93,13 +92,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 }
 
-.main--dice.selected {
-  background: #59e391;
-}
-
-.main--button {
+.roll-dice {
   background: #5035ff;
   box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
   border-radius: 3.81277px;
@@ -114,4 +111,9 @@ body {
   margin: 40px 0 0 0;
 
   border: none;
+  cursor: pointer;
+}
+
+.roll-dice:active {
+  box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
