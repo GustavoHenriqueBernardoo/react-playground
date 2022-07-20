@@ -1,11 +1,4 @@
-/**
- * Challenge: Add conditional styling to the Die component
- * so that if it's held (isHeld === true), its background color
- * changes to a light green (#59E391)
- * 
- * Remember: currently the Die component has no way of knowing
- * if it's "held" or not.
- */
+
 
 import React from "react";
 import Die from "./Die";
@@ -13,22 +6,41 @@ import { nanoid } from "nanoid";
 
 export default function Main() {
 
+  const [dice, setDice] = React.useState(allNewDice())
+
+  function createNewDice() {
+    return {
+      value: Math.ceil(Math.random() * 6),
+      isHeld: false,
+      id: nanoid()
+    }
+  }
+
   function allNewDice() {
     const newDice = []
     for (let i = 0; i < 10; i++) {
-      newDice.push(
-        {
-          value: Math.ceil(Math.random() * 6),
-          isHeld: false,
-          id: nanoid()
-        })
+      newDice.push(createNewDice())
     }
     return newDice
   }
 
+  function holdDice(id) {
+    setDice(oldDice => oldDice.map((die) => id === die.id ? { ...die, isHeld: !die.isHeld } : die))
+  }
 
+  /**
+ * Challenge: Update the `rollDice` function to not just roll
+ * all new dice, but instead to look through the existing dice
+ * to NOT role any that are being `held`.
+ * 
+ * Hint: this will look relatively similiar to the `holdDice`
+ * function below. When creating new dice, remember to use
+ * `id: nanoid()` so any new dice have an `id` as well.
+ */
 
-  const [dice, setDice] = React.useState(allNewDice())
+  function rollDice() {
+    setDice(oldDice => oldDice.map(die => die.isHeld ? die : createNewDice()))
+  }
 
   const dieElement = dice.map(die => {
     return (
@@ -36,15 +48,12 @@ export default function Main() {
         value={die.value}
         isHeld={die.isHeld}
         key={die.id}
+        id={die.id}
+        holdDice={holdDice}
       />
     )
 
   })
-
-  function rollDice() {
-    setDice(allNewDice())
-  }
-
 
   return (
     <main className="main">
