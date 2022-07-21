@@ -1,7 +1,7 @@
 import React from "react";
 import Die from "./Die";
 import { nanoid } from "nanoid";
-import Confetti from "./Confetti";
+import Confetti from 'react-confetti'
 
 export default function Main() {
 
@@ -41,7 +41,14 @@ export default function Main() {
   }
 
   function rollDice() {
-    setDice(oldDice => oldDice.map(die => die.isHeld ? die : createNewDice()))
+    if (tenzies) {
+      setDice(allNewDice())
+      setTenzies(false)
+    }
+    else {
+      setDice(oldDice => oldDice.map(die => die.isHeld ? die : createNewDice()
+      ))
+    }
   }
 
   const dieElement = dice.map(die => {
